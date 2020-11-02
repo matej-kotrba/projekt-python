@@ -290,9 +290,9 @@ print(f'\n*************************************\nCvičení 2\n******************
 
 # ??? 3. cvičení ???
 # a) Přidejte do listu persons ještě n-tice (tuples) dalších 2 žen a 2 mužů.
-# a) Použijte seznam (list) persons a do proměnné women z něj pomocí lambda výrazu i comprehensions vyhledejte všechny ženy.
+# b) Použijte seznam (list) persons a do proměnné women z něj pomocí lambda výrazu i comprehensions vyhledejte všechny ženy.
 # Seznam jmen žen poté vypište na samostatné řádky. Každý vypsaný řádek bude podtržen pomlčkami přesně podle délky jména.
-# b) Použijte seznam (list) persons a do proměnné ipeople z něj pomocí lambda výrazu i comprehensions vyhledejte všechny osoby
+# c) Použijte seznam (list) persons a do proměnné ipeople z něj pomocí lambda výrazu i comprehensions vyhledejte všechny osoby
 # obsahující ve jméně písmeno "i". Obsah listu ipeople poté převeďte do podoby řetězce, který bude odpovídat struktuře csv souboru.
 # Kromě jména, věku a pohlaví v něm budou vypsána i čísla indexů (jako 1. sloupec). Oddělovačem bude středník.
 # Záznamy budou seřazeny podle věku (sestupně).
