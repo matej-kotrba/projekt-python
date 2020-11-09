@@ -27,7 +27,7 @@ class Point:
 
     # Magická metoda pro zjištění, zda je objekt větší (je dál od středu) než druhý
     def __gt__(self, other):
-        return self.__sub__(Point.zero()) > other.__sub__(Point.zero())
+        return self.sub__(Point.zero()) > other.__sub__(Point.zero())
 
     # Magická metoda pro součet dvou objektů
     def __add__(self, other):
@@ -67,16 +67,28 @@ class Point:
 
 
 #? Vytvoř objekt bod1 na pozici x: 8, y: 5
+bod1 = Point(8, 5)
+print(bod1)
 
 #? Vytvoř objekt bod2 na pozici x: 4, y: 10
+bod2 = Point(4, 10)
+print(bod2)
 
 #? Změň výchozí barvu na modrou
+Point.default_color = 'blue'
 
 #? Vytvoř objekt bod3 pomocí metody zero()
+bod3 = Point.zero()
+bod1.draw()
+bod2.change_color(Point.random_color())
+bod2.draw()
+bod3.draw()
 
 #? Ověř datový typ objektu bod1
+print(type(bod1))
 
 #? Ověř zda je objekt bod2 instancí třídy Point
+print(isinstance(bod2, object))
 
 #? Proveď změnu barvy objektu bod2 na náhodnou barvu vygenerovanou statickou metodou random_color()
 
