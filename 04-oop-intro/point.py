@@ -6,6 +6,11 @@ Příklad jednoduché třídy Point umožňující vytvářet symbolické grafic
 class Point:
     # Atribut na úrovni třídy
     default_color = 'red'
+    # Konstanty na úrovni třídy
+    # Privátní konstanta, vně třídy nepřístupná
+    __MAX_X = 1000
+    # Veřejná konstanta, vně třídy přístupná
+    MAX_Y = 1000
 
     # Metoda pro inicializaci objektu (konstruktor)
     def __init__(self, x, y):
@@ -62,12 +67,63 @@ class Point:
         print(f'Bod (x:{self.x}, y:{self.y}), barva: {self.color}')
 
     #? Tady bude metoda objektu change_color(), která bude na základě zadaného argumentu nastavovat barvu objektu
-    def change_color(self, color):
-        self.color = color
+    # def change_color(self, color):
+    #    self.color = color
+
+    # Vlastnosti (properties) třídy zprostředkující přístup k zapouzdřeným atributům self.__x, self.__y a self.__color
+    # Getter pro získání hodnoty atributu self.__x
+    @property
+    def x(self):
+        return self.__x
+
+    # Setter pro nastavení hodnoty atributu self.__x
+    @x.setter
+    def x(self, value):
+        # Ošetření zadání hodnoty do property pomocí bloku výjimky (try - except [- finally])
+        # V bloku try se má provést (nejistý) sled příkazů
+        try:
+            value = int(value)
+            if value > Point.__MAX_X:
+                # Příkazem raise se vyvolá určitá výjimka - v tomto případě nejobecnější - Exception()
+                raise Exception(f'The value of a variable x is greater than {Point.__MAX_X}')
+            self.__x = value
+        # Když v bloku try nastane nějaká chyba (výjimka), řeší se v části except
+        except ValueError:
+            # V tomto případě příkaz raise vyvolá specifickou výjimku - ValueError()
+            raise ValueError('The value of a variable x is not a number')
+
+
+    # Getter pro získání hodnoty atributu self.__y
+    @property
+    def y(self):
+        return self.__y
+
+    # Setter pro nastavení hodnoty atributu self.__y
+    @y.setter
+    def y(self, value):
+        try:
+            value = int(value)
+            if value > Point.MAX_Y:
+                raise Exception(f'The value of a variable y {value} is greater than {Point.MAX_Y}')
+            self.__y = value
+        except ValueError:
+            raise ValueError('The value of a variable y is not a number')
+
+    # Getter pro získání hodnoty atributu self.__color
+    @property
+    def color(self):
+        return self.__color
+
+    # Setter pro nastavení hodnoty atributu self.__color
+    @color.setter
+    def color(self, value):
+        self.__color = value
 
 
 #? Vytvoř objekt bod1 na pozici x: 8, y: 5
-bod1 = Point(8, 5)
+Point.__MAX_X = 500
+Point.MAX_Y = 500
+bod1 = Point(508, 501)
 print(bod1)
 
 #? Vytvoř objekt bod2 na pozici x: 4, y: 10
@@ -80,7 +136,7 @@ Point.default_color = 'blue'
 #? Vytvoř objekt bod3 pomocí metody zero()
 bod3 = Point.zero()
 bod1.draw()
-bod2.change_color(Point.random_color())
+bod2.color = Point.random_color()
 bod2.draw()
 bod3.draw()
 
@@ -92,7 +148,7 @@ print(isinstance(bod2, Point))
 print(isinstance(bod2, object))
 
 #? Proveď změnu barvy objektu bod2 na náhodnou barvu vygenerovanou statickou metodou random_color()
-bod2.change_color(Point.random_color())
+bod2.color = Point.random_color()
 bod2.draw()
 
 #? Ověř fungování všech magických metod na příkladech objektů bod1 a bod2
