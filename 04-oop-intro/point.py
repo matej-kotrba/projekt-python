@@ -120,14 +120,35 @@ class Point:
         self.__color = value
 
 
+'''
+Příklad dědičnosti - třída InfoPoint je dědicem (potomkem - child) třídy předka (parent) Point
+'''
+class InfoPoint(Point):
+    # Metoda konstruktoru - v této třídě potomka doplněna o atribut url
+    def __init__(self, x, y, url):
+        # Metoda super() zpřístupňuje atributy a metody předka - v tomto případě konstruktor
+        super().__init__(x, y)
+        self.url = url
+
+    # Přepsaná (override) magická metoda pro výpis textové informace o objektu - využití polymorfismu
+    def __str__(self):
+        return f'({self.x}, {self.y}, {self.url})'
+
+    # Přepsaná metoda objektu, která (symbolicky v podobě textu) "vykreslí" daný objekt - další příklad polymorfismu
+    def draw(self):
+        super().draw()
+        # Argument self zastupuje samotný objekt
+        print(f'URL: {self.url}')
+
+
 #? Vytvoř objekt bod1 na pozici x: 8, y: 5
 Point.__MAX_X = 500
 Point.MAX_Y = 500
-bod1 = Point(508, 501)
+bod1 = Point(8, 5)
 print(bod1)
 
 #? Vytvoř objekt bod2 na pozici x: 4, y: 10
-bod2 = Point(4, 10)
+bod2 = InfoPoint(4, 10, 'https://www.sspu-opava.cz')
 print(bod2)
 
 #? Změň výchozí barvu na modrou
@@ -142,6 +163,7 @@ bod3.draw()
 
 #? Ověř datový typ objektu bod1
 print(type(bod1))
+print(type(bod2))
 
 #? Ověř zda je objekt bod2 instancí třídy Point
 print(isinstance(bod2, Point))
