@@ -55,7 +55,7 @@ Ve formátovaném výstupním řetězci můžeme používat také pojmenované a
 '''
 
 # Příklad formátovaného výstupu s využitím pojmenovaných argumentů
-print('Jsem {prijmeni}, {jmeno} {prijmeni}.'.format(jmeno = 'James', prijmeni = 'Bond'))
+print('Jmenuji se {prijmeni}, {jmeno} {prijmeni}.'.format(jmeno = 'James', prijmeni = 'Bond'))
 
 '''
 Rovněž je možné při formátování řetězců aplikovat tradiční sprintf() styl převzatý z jazyka C - tedy s využitím
@@ -96,5 +96,5 @@ Cvičení 3:
 Vytvořte originální aplikaci v Pythonu, v níž požádáte uživatele o různé vstupní údaje a
 využijete na maximum možností výstupů do konzole. Může to být vtipný dotazník, jednoduchý znalostní test (např. 
 z matematiky...), průvodce fiktivní instalací atd. Fantazii se meze nekladou a vtipnější vyhrává :-)
-Aplikaci uložte do samostatného souboru myapp.py.     
+Aplikaci uložte do samostatného souboru myapp.py.    
 """

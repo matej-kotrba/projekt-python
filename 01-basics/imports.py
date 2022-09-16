@@ -7,6 +7,7 @@ Moduly v Pythonu jsou uloženy v samostatných souborech s příponou .py.
 Definice uvnitř modulů mohou být importovány do jiných modulů nebo do interaktivní pythonovské konzoly.
 Připojení modulů provádíme klíčovým slovem import.
 '''
+from dateutil.rrule import SU
 
 '''
 Příklad importu modulu math. V tomto případě můžeme pomocí tečkového operátoru využít všechny atributy a funkce,
@@ -75,3 +76,19 @@ Použijte vhodné moduly v Pythonu (včetně jejich případné instalace) k tom
 K řešení prvního úkolu je možné doporučit importovat interní modul datetime
 Řešení dalších dvou úkolů můžete odvodit z příkladů v dokumentaci k externímu modulu dateutil - viz https://pypi.org/project/python-dateutil/
 """
+
+import datetime
+from dateutil.rrule import *
+from dateutil.easter import *
+from dateutil.relativedelta import *
+
+date = datetime.datetime.now()
+
+thisYear = date.year
+
+print(date)
+
+for i in range(5):
+    print(easter(thisYear + i))
+
+print(rrule(YEARLY, dtstart=date, bymonth=12, bymonthday=24, byweekday=SU)[i].year)

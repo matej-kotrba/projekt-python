@@ -17,7 +17,6 @@ for i in range(1, 10):
     else:
         print('odd')
 
-
 '''
 Dokumentační řetězce v Pythonu (docstrings)
 
@@ -29,6 +28,7 @@ Docstrings se zapisují mezi trojnásobné uvozovky (tedy podobně jako komentá
 Tyto dokumentační řetězce jsou přístupné prostřednictvím "magického" __doc__ atributu funkce.    
 '''
 
+
 # Odsazení bloku kódu uvnitř funkce a použití docstring
 def greet(name):
     """
@@ -36,6 +36,7 @@ def greet(name):
     passed in as a parameter
     """
     print("Ahoj, " + name + "!")
+
 
 # Vypíše docstring spojený s funkcí greet
 print(greet.__doc__)
@@ -50,3 +51,29 @@ aspoň jednu podmínku if a funkci print(). Dodržte správné odsazování kód
 Do konzole vypište nejprve docstring vaší funkce a potom zavolejte funkci samotnou.   
 """
 
+array = [1,1,1,1,1,1,1,1,1]
+
+
+def change_array(array, arrayLength, startIndex, shouldCopy):
+    """
+        This function will fill array with numbers,
+        expecting that you have already created indexes and won't leave array.
+        array - array you want to change
+        arrayLength - how many indexes you want to change
+        startIndex - index you want to start on
+        shouldCopy - if true, return new array without affecting the old one
+    """
+    assert len(array) > startIndex + arrayLength
+    new_array = array[:] if shouldCopy else array
+    if arrayLength <= startIndex:
+        print("Incorrect combination of arrayLength and startIndex")
+        return
+    for k in range(startIndex, arrayLength):
+        new_array[k] = k
+        print(f"Created new value of {i} in the array.")
+    return new_array
+
+
+print(change_array.__doc__)
+print(change_array(array, 5, 1, True))
+print(array)
