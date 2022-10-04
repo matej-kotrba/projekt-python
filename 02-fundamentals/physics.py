@@ -6,10 +6,10 @@ V Pythonu jsou konstanty obvykle deklarovány a přiřazovány v modulu, který 
 Konstanty jsou pojmenovány velkými písmeny a jednotlivá slova jsou oddělována podtržítky.
 '''
 
-EARTH_GRAVITY = 0 #? normální pozemské tíhové zrychlení
-MOON_GRAVITY = 0 #? měsíční gravitace
-SPEED_OF_LIGHT = 0 #? rychlost světla ve vakuu
-SPEED_OF_SOUND = 0 #? rychlost zvuku při teplotě 20 °C v suchém vzduchu
+EARTH_GRAVITY = 9.807 #? normální pozemské tíhové zrychlení
+MOON_GRAVITY = 1.62 #? měsíční gravitace
+SPEED_OF_LIGHT = 300000000  #? rychlost světla ve vakuu
+SPEED_OF_SOUND = 343 #? rychlost zvuku při teplotě 20 °C v suchém vzduchu
 
 ''' 
 Úkol:

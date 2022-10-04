@@ -41,9 +41,9 @@ while command.lower() != "q":
     print("Ukonci program zadanim pismene \"q\"")
 print("Program ukoncen")
 
-while True:
-    print("Ukonci program zadanim pismene \"q\"")
-    command = input(">")
-    if command.lower() == "q":
-        break
-print("Program ukoncen")
+# while True:
+#     print("Ukonci program zadanim pismene \"q\"")
+#     command = input(">")
+#     if command.lower() == "q":
+#         break
+# print("Program ukoncen")

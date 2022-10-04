@@ -1,3 +1,5 @@
+import unidecode
+
 # Znakové řetězce mohou být uvozeny jednoduchými i dvojitými uvozovkami
 course_name = "Python programming"
 
@@ -37,7 +39,7 @@ message = '''
 
        Andrej
 '''
-# print(message)
+#print(message)
 
 # Funkce len vrací délku řetězce
 # print(len(message))
@@ -80,7 +82,7 @@ Při neuvedení druhého indexu se použije délka řetězce (čili konec řetě
 # Vypíše vše od 2. znaku
 # print(course_name[1:])
 # Vypíše vše od 2. znaku do předposledního
-# print(course_name[1:-1])
+#print(course_name[1:-1])
 # Vypíše 3 znaky od začátku
 # print(course_name[:3])
 
@@ -88,7 +90,7 @@ Při neuvedení druhého indexu se použije délka řetězce (čili konec řetě
 Další vlastností slice indexů je jejich automatické "zarovnávání" na rozměr řetězce. 
 Je-li totiž index použitý ve slice konstrukci příliš velký, je nahrazen délkou řetězce. 
 '''
-# print(course_name[1:50])
+#print(course_name[1:50])
 # Pokud je dolní index větší než horní, je výsledkem prázdný řetězec:
 # print(course_name[2:1])
 
@@ -98,7 +100,7 @@ second_name = "  Trump"
 # print(first_name + second_name)
 
 # Opakování řetězců
-# print(first_name + second_name * 3)
+#print(first_name + second_name * 3)
 
 '''
 Řetězce v jazyce Python nelze měnit. Pokusíme-li se změnit určitou pozici v řetězci, dojde k chybě.
@@ -110,16 +112,16 @@ Proto jedinou cestou, jak vytvářet nové řetězce, je jejich kombinování, k
 # print('R' + first_name[1:])
 
 # Formátovaný výstup, použití řetězcových funkcí
-# print(f"{first_name.upper().rstrip()} {second_name.lower().lstrip()} {5 * 4} {len(message)}")
+#print(f"{first_name.upper().rstrip()} {second_name.lower().lstrip()} {5 * 4} {len(message)}")
 
 # Nalezení pozice podřetězce v řetězci
-# print(first_name.find("na"))
+#print(first_name.find("na"))
 
 # Nahrazení podřetězce v řetězci
-# print(first_name.upper().replace("D", "*"))
+#print(first_name.upper().replace("D", "*"))
 
 # Zjištění výskytu podřetězce
-# print("na" not in first_name)
+#print("na" not in first_name)
 
 '''
 Python umí pracovat s Unicode řetězci úplně stejným způsobem jako s obyčejnými řetězci. 
@@ -158,3 +160,42 @@ funkční kód, tím lepší).
 3. Vytvořte funkci, která vygeneruje náhodná hesla pro počet osob zadaný v parametru tak, aby heslo začínalo
    3 velkými písmeny, pokračovalo 3 malými písmeny, jedním speciálním znakem (-/+*) a končilo 3 náhodnými číslicemi.
 '''
+
+def preved_ceske_datum(string):
+    return string.replace(". ", "-")
+
+print(preved_ceske_datum("12. 10. 2020"))
+
+def preved_souslovi(string):
+    new_string = unidecode.unidecode(string)
+    pom_string = new_string
+    for i in range(len(new_string)):
+        if new_string[i-1] == " ":
+            pom_string = pom_string[:i] + new_string[i].upper() + pom_string[i+1:]
+        elif i == 0:
+            pom_string = pom_string[0].lower() + pom_string[1:]
+
+    return (unidecode.unidecode(string.lower().replace(" ", "_")), pom_string.replace(" ", ""))
+
+(camel_case, snake_case) = preved_souslovi("To je proměnná v Pythonu")
+
+print(camel_case, snake_case)
+
+import string
+import random
+
+def password(pocet):
+    hesla = []
+    for k in range(pocet):
+        heslo = ""
+        for i in range(3):
+            heslo += random.choice(string.ascii_uppercase)
+        for i in range(3):
+            heslo += random.choice(string.ascii_lowercase)
+        heslo += random.choice(string.punctuation)
+        for i in range(3):
+            heslo += random.choice(string.digits)
+        hesla.append(heslo)
+    return hesla
+
+print(password(5))

@@ -70,7 +70,7 @@ def change_array(array, arrayLength, startIndex, shouldCopy):
         return
     for k in range(startIndex, arrayLength):
         new_array[k] = k
-        print(f"Created new value of {i} in the array.")
+        print(f"Created new value of {k} in the array.")
     return new_array
 
 

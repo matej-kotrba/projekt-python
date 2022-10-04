@@ -91,4 +91,4 @@ print(date)
 for i in range(5):
     print(easter(thisYear + i))
 
-print(rrule(YEARLY, dtstart=date, bymonth=12, bymonthday=24, byweekday=SU)[0].year)
+print(rrule(YEARLY, dtstart=date, bymonth=12, bymonthday=24, byweekday=SU)[i].year)
